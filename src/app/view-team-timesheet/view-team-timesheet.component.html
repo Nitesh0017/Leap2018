@@ -1,0 +1,105 @@
+<app-timesheet-headerscreen ></app-timesheet-headerscreen>
+
+<!------------------------------------------------------------------------------------------- -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+          <mat-form-field>
+              <mat-select placeholder="Select Employee" >
+                <mat-option *ngFor="let team of retrieveTeam" (click)="selectedEmployeeTimesheet(team.empId)" [value]="team.empId">
+                  {{team.empName}}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+      </div>
+    </div>
+  </div>  
+  
+
+  <!-------------------------------------------------------------------------------------------------- -->
+<div *ngIf="selectedEmployee">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12" >
+          <div style="padding:10px;margin:0 auto;" >
+              <table style="border: 2px solid chocolate;text-align: center;border-collapse: collapse;">
+                  <tr>
+                      <th style="border: 2px solid chocolate; width: 25%;">Time Duration</th>
+                      <th style="border: 2px solid chocolate; width: 15%;">Timesheet Status</th>
+                      <th style="border: 2px solid chocolate; width: 15%;">Work Effort Hours</th>
+                      <th style="border: 2px solid chocolate; width: 15%;">Submission Date</th>
+                      <th style="border: 2px solid chocolate; width: 25%;">Action</th>
+                  </tr>
+                  <tr *ngFor="let timesheet of retrieveEmployeeTimesheet; let i = index" [class.active]="i == selectedRow">    
+                      <td style="border: 2px solid chocolate;">{{timesheet.timesheetWeek}}</td>
+                      <td style="border: 2px solid chocolate">{{timesheet.timesheetStatus}}</td>
+                      <td style="border: 2px solid chocolate">{{timesheet.effortHours}}</td>
+                      <td style="border: 2px solid chocolate">{{timesheet.submissionTimesheetDate.split("T")[0]}}</td>
+                      <td style="border: 2px solid chocolate"><button style="width:45%;height: 35px; margin-right: 5%;" class="btn btn-primary" (click)="reviewEmployeeTimesheet(timesheet)">View</button></td>
+                  </tr>
+              </table>
+          </div>
+          </div>
+      </div>
+    </div>
+ </div>   
+<!------------------------------------------------------------------------------------------- -->
+
+<!-------------------------------------------------------------------------------------------------------------- -->
+<div *ngIf="varSelectedEmployeeTimesheet">
+<div style="width:80%; text-align:center; margin-left: 10%; margin-right:10%" >
+        <table class="table table-striped"
+         style="border: 2px solid chocolate;border-collapse: collapse;text-align:center;margin-bottom: 40px;">
+        <thead>
+            <tr *ngFor="let retrieveDates of RetrieveTimesheet">
+              <th scope="col">Project</th>
+              <th scope="col" >{{retrieveDates.timesheet1Date.split("T")[0]}}</th>
+              <th scope="col" >{{retrieveDates.timesheet2Date.split("T")[0]}}</th>
+              <th scope="col" >{{retrieveDates.timesheet3Date.split("T")[0]}}</th>
+              <th scope="col" >{{retrieveDates.timesheet4Date.split("T")[0]}}</th>
+              <th scope="col" >{{retrieveDates.timesheet5Date.split("T")[0]}}</th>
+              <th scope="col" >{{retrieveDates.timesheet6Date.split("T")[0]}}</th>
+              <th scope="col" >{{retrieveDates.timesheet7Date.split("T")[0]}}</th>        
+              <th scope="col">Work Description</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let retrieveEffort of RetrieveEffort">
+            <th>
+              {{retrieveEffort.projectId}}
+            </th>
+            <td>
+                {{retrieveEffort.timesheet1DateEffort}}
+            </td>
+            <td>
+                {{retrieveEffort.timesheet2DateEffort}}
+              </td>
+              <td>
+                {{retrieveEffort.timesheet3DateEffort}}
+              </td>
+              <td>
+                {{retrieveEffort.timesheet4DateEffort}}
+            </td>
+            <td>
+                {{retrieveEffort.timesheet5DateEffort}}
+              </td>
+              <td>
+                {{retrieveEffort.timesheet6DateEffort}}
+              </td> 
+              <td>
+                {{retrieveEffort.timesheet7DateEffort}}
+              </td> 
+              <td>
+                {{retrieveEffort.taskDescription}}
+            </td>
+        </tr>
+        </tbody>
+      </table>
+   </div>
+ </div>  
+
+
+
+<!-------------------------------------------------------------------------------------------------------------- -->
+<app-timesheet-footerscreen></app-timesheet-footerscreen>

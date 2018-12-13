@@ -1,0 +1,35 @@
+
+<label>Time spent at Office</label>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        <mat-form-field>
+            <mat-select placeholder="Select Employee" >
+              <mat-option *ngFor="let team of retrieveTeam" (click)="selectedEmployeeTimesheet(team.empId)" [value]="team.empId">
+                {{team.empName}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+  </div>
+</div>  
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <canvas 
+      baseChart
+      [chartType]="'bar'"
+      [datasets]="pieChartData"
+      [labels]="pieChartLabels"
+      [options]="pieChartOptions"
+      [legend]="true"
+      [colors]="pieChartColor"
+      (chartClick)="onChartClick($event)">
+  </canvas>
+</div>
+<div class="col-md-1"></div>
+</div>
+</div>

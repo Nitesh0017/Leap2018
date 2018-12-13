@@ -1,0 +1,11 @@
+#addTimesheet{
+    margin-left: 20px;
+    margin-right: 20px;
+    display: inline-block;
+    height:35px;
+}
+
+.gap{
+    margin-left: 10px;
+    display: inline-block;
+}

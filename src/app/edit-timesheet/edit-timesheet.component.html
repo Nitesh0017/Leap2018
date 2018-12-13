@@ -1,0 +1,742 @@
+<app-timesheet-headerscreen></app-timesheet-headerscreen>
+<!-------------------------------------------------------------------------------------------------------------- -->
+
+<div class="personaldetails">
+<div class="container">
+  <div class="row" *ngFor="let detail of employeeDetails">
+    <div class="col-md-3">
+      <label class="row1">Employee Name : </label><br>
+      
+      <label class="row1">Employee Id : </label><br>
+      
+      <label class="row1">Employee Grade : </label><br>
+      
+      <label class="row1">Employee Designation : </label><br>
+      
+      <label class="row1">Location : </label><br>
+      
+      </div>
+    <div class="col-md-3">
+        <label class="row2">{{detail.empName}}</label><br>
+        <label class="row2">{{detail.empId}}</label><br>
+        <label class="row2">{{detail.empGrade}}</label><br>
+        <label class="row2">{{detail.designation}}</label><br>
+        <label class="row2">{{detail.location}}</label><br>
+    </div>
+    <div class="col-md-3">
+        <label class="row1">Employee Email : </label><br>
+      
+        <label class="row1">Employee Contact : </label><br>
+        
+        <label class="row1">Reporting Manager Id : </label><br>
+        
+        <label class="row1">Employee Department : </label><br>
+
+        <label class="row1">Trianz Experience : </label><br>
+        
+        </div>
+      <div class="col-md-3">
+          <label class="row2">{{detail.emailId}}</label><br>
+          <label class="row2">{{detail.empContact}}</label><br>
+          <label class="row2">{{detail.rmId}}</label><br>
+          <label class="row2">{{detail.department}}</label><br>
+          <label class="row2">{{detail.trianzExp}}</label><br>
+        </div>
+  </div>  
+</div>
+</div>
+<!-------------------------------------------------------------------------------------------------------------- -->
+<div class="container" id="loginContainer">
+    <div class="row" *ngIf="this.messageStatus">
+      <div class="col-md-3"></div>
+        <div class="col-md-6" >
+          <p class="loginMessage">{{this.submitMessage}}</p>
+        </div>
+      <div class="col-md-3"></div>
+    </div>
+ </div>   
+<hr>
+<div >
+<button id="buttonAction" (click)="cancelEdittedTimesheet()" class="btn btn-primary">Cancel</button><button id="buttonAction" (click)="submitEdittedTimesheet()" class="btn btn-primary">Submit Timesheet</button><button id="buttonAction" (click)="saveEdittedTimesheet()" class="btn btn-primary">Save Timesheet</button>
+</div>
+<br>
+<hr>
+<!-------------------------------------------------------------------------------------------------------------- -->
+<div style="width:80%; text-align:center; margin-left: 10%; margin-right:10%" >
+        <table class="table table-striped" style="border: 2px solid chocolate;border-collapse: collapse;text-align:center;margin-bottom: 40px;">
+        <thead>
+            <tr *ngFor="let retrieveDates of RetrieveTimesheet">
+              <th scope="col">Project</th>
+              <th scope="col" >{{retrieveDates.timesheet1Date.split("T")[0]}}</th>
+              <th scope="col" >{{retrieveDates.timesheet2Date.split("T")[0]}}</th>
+              <th scope="col" >{{retrieveDates.timesheet3Date.split("T")[0]}}</th>
+              <th scope="col" >{{retrieveDates.timesheet4Date.split("T")[0]}}</th>
+              <th scope="col" >{{retrieveDates.timesheet5Date.split("T")[0]}}</th>
+              <th scope="col" >{{retrieveDates.timesheet6Date.split("T")[0]}}</th>
+              <th scope="col" >{{retrieveDates.timesheet7Date.split("T")[0]}}</th>        
+              <th scope="col">Work Description</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="projectLength>=1">
+            <th>
+              {{RetrieveTimesheetProject1}}
+            </th>
+            <td>
+              <select  class='form-control' name="selectHour11" [(ngModel)]="selectHour11"  [value]='0'>
+                <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+              </select>
+            </td>
+            <td>
+                <select  class='form-control' name="selectHour12" [(ngModel)]="selectHour12" [value]='0'>
+                  <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                  <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                  <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                </select>
+              </td>
+              <td>
+                <select  class='form-control' name="selectHour13" [(ngModel)]="selectHour13" [value]='0'>
+                  <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                  <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                  <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                </select>
+              </td>
+              <td>
+                <select  class='form-control' name="selectHour14" [(ngModel)]="selectHour14"  [value]='0'>
+                  <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                  <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                  <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                </select>
+              </td>
+              <td>
+                  <select  class='form-control' name="selectHour15" [(ngModel)]="selectHour15"  [value]='0'>
+                    <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                    <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                    <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                  </select>
+                </td>
+              <td>
+                <select  class='form-control' name="selectHour16" [(ngModel)]="selectHour16"  [value]='0'>
+                  <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                  <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                  <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                </select>
+              </td>  
+              <td>
+                  <select  class='form-control' name="selectHour17" [(ngModel)]="selectHour17"  [value]='0'>
+                    <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                    <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                    <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                  </select>
+              </td> 
+              <td>
+                <textarea name="workDescription1" [(ngModel)]="workDescription1" cols="30" rows="1"></textarea>
+              </td>
+          </tr>
+          <tr *ngIf="projectLength>=2">
+            <th>
+              {{RetrieveTimesheetProject2}}
+            </th>
+            <td>
+              <select  class='form-control' name="selectHour21" [(ngModel)]="selectHour21"  [value]='0'>
+                <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+              </select>
+            </td>
+            <td>
+                <select  class='form-control' name="selectHour22" [(ngModel)]="selectHour22" [value]='0'>
+                  <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                  <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                  <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                </select>
+              </td>
+              <td>
+                <select  class='form-control' name="selectHour23" [(ngModel)]="selectHour23" [value]='0'>
+                  <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                  <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                  <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                </select>
+              </td>
+              <td>
+                <select  class='form-control' name="selectHour24" [(ngModel)]="selectHour24"  [value]='0'>
+                  <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                  <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                  <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                </select>
+              </td>
+              <td>
+                <select  class='form-control' name="selectHour25" [(ngModel)]="selectHour25" [value]='0'>
+                  <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                  <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                  <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                </select>
+              </td>
+              <td>
+                <select  class='form-control' name="selectHour26" [(ngModel)]="selectHour26"  [value]='0'>
+                  <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                  <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                  <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                </select>
+              </td>  
+              <td>
+                  <select  class='form-control' name="selectHour27" [(ngModel)]="selectHour27"  [value]='0'>
+                    <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                    <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                    <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                  </select>
+              </td> 
+              <td>
+                <textarea name="workDescription2" [(ngModel)]="workDescription2" cols="30" rows="1"></textarea>
+              </td>
+          </tr>
+          <tr *ngIf="projectLength>=3">
+            <th>
+              {{RetrieveTimesheetProject3}}
+            </th>
+              <td>
+                <select  class='form-control' name="selectHour31" [(ngModel)]="selectHour31"  [value]='0'>
+                  <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                  <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                  <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                </select>
+              </td>
+              <td>
+                  <select  class='form-control' name="selectHour32" [(ngModel)]="selectHour32" [value]='0'>
+                    <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                    <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                    <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                  </select>
+                </td>
+                <td>
+                  <select  class='form-control' name="selectHour33" [(ngModel)]="selectHour33"  [value]='0'>                     
+                    <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                    <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                    <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                  </select>
+                </td>
+                <td>
+                  <select  class='form-control' name="selectHour34" [(ngModel)]="selectHour34"  [value]='0'>
+                    <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                    <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                    <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                  </select>
+                </td>
+                <td>
+                  <select  class='form-control' name="selectHour35" [(ngModel)]="selectHour35"  [value]='0'>
+                    <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                    <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                    <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                  </select>
+                </td>
+                <td>
+                  <select  class='form-control' name="selectHour36" [(ngModel)]="selectHour36"  [value]='0'>
+                    <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                    <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                    <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                  </select>
+                </td>  
+                <td>
+                    <select  class='form-control' name="selectHour37" [(ngModel)]="selectHour37" [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                </td> 
+                <td>
+                  <textarea name="workDescription3" [(ngModel)]="workDescription3" cols="30" rows="1"></textarea>
+                </td>
+            </tr>
+            <tr *ngIf="projectLength>=4">
+              <th>
+                {{RetrieveTimesheetProject4}}
+              </th>
+                <td>
+                  <select  class='form-control' name="selectHour41" [(ngModel)]="selectHour41"  [value]='0'>
+                    <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                    <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                    <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                  </select>
+                </td>
+                <td>
+                    <select  class='form-control' name="selectHour42" [(ngModel)]="selectHour42" [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select  class='form-control' name="selectHour43" [(ngModel)]="selectHour43" [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select  class='form-control' name="selectHour44" [(ngModel)]="selectHour44"  [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select  class='form-control' name="selectHour45" [(ngModel)]="selectHour45" [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select  class='form-control' name="selectHour46" [(ngModel)]="selectHour46"  [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                  </td>  
+                  <td>
+                      <select  class='form-control' name="selectHour47" [(ngModel)]="selectHour47" [value]='0'>
+                        <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                        <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                        <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                      </select>
+                  </td> 
+                  <td>
+                    <textarea name="workDescription4" [(ngModel)]="workDescription4" cols="30" rows="1"></textarea>
+                  </td>
+              </tr>
+              <tr *ngIf="projectLength>=5">
+                <th>
+                  {{RetrieveTimesheetProject5}}
+                </th>
+                  <td>
+                    <select  class='form-control' name="selectHour51" [(ngModel)]="selectHour51"  [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                  </td>
+                  <td>
+                      <select  class='form-control' name="selectHour52" [(ngModel)]="selectHour52"  [value]='0'>
+                        <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                        <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                        <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select  class='form-control' name="selectHour53" [(ngModel)]="selectHour53" [value]='0'>
+                        <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                        <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                        <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select  class='form-control'  name="selectHour54" [(ngModel)]="selectHour54"  [value]='0'>
+                        <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                        <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                        <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select  class='form-control' name="selectHour55" [(ngModel)]="selectHour55"  [value]='0'>
+                        <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                        <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                        <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select  class='form-control' name="selectHour56" [(ngModel)]="selectHour56"  [value]='0'>
+                        <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                        <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                        <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                      </select>
+                    </td>  
+                    <td>
+                        <select  class='form-control' name="selectHour57" [(ngModel)]="selectHour57"  [value]='0'>
+                          <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                          <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                          <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                        </select>
+                    </td> 
+                    <td>
+                      <textarea name="workDescription5" [(ngModel)]="workDescription5" cols="30" rows="1"></textarea>
+                    </td>
+                </tr>
+                <tr *ngIf="projectLength>=6">
+                  <th>
+                    {{RetrieveTimesheetProject6}}
+                  </th>
+                    <td>
+                      <select  class='form-control' name="selectHour61" [(ngModel)]="selectHour61"  [value]='0'>
+                        <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                        <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                        <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                      </select>
+                    </td>
+                    <td>
+                        <select  class='form-control' name="selectHour62" [(ngModel)]="selectHour62" [value]='0'>
+                          <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                          <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                          <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select  class='form-control' name="selectHour63" [(ngModel)]="selectHour63" [value]='0'>
+                          <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                          <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                          <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select  class='form-control' name="selectHour64" [(ngModel)]="selectHour64" [value]='0'>
+                          <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                          <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                          <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select  class='form-control' name="selectHour65" [(ngModel)]="selectHour65" [value]='0'>
+                          <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                          <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                          <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select  class='form-control' name="selectHour66" [(ngModel)]="selectHour66"  [value]='0'>
+                          <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                          <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                          <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                        </select>
+                      </td>  
+                      <td>
+                          <select  class='form-control' name="selectHour67" [(ngModel)]="selectHour67" [value]='0'>
+                            <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                            <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                            <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                          </select>
+                      </td> 
+                      <td> 
+                        <textarea name="workDescription6" [(ngModel)]="workDescription6" cols="30" rows="1"></textarea>
+                      </td>
+                  </tr>
+        <tr *ngIf="projectLength<2">
+          <td><mat-form-field>
+              <mat-select  [(ngModel)]="selectedValue2" name="Selected Project">
+                <mat-option *ngFor="let Project of httpdata" [value]="Project.projectId">
+                  {{Project.projectId}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <select  class='form-control' name="selectHour21" [(ngModel)]="selectHour21"  [value]='0'>
+              <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+              <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+              <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+            </select>
+          </td>
+          <td>
+              <select  class='form-control' name="selectHour22" [(ngModel)]="selectHour22" [value]='0'>
+                <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+              </select>
+            </td>
+            <td>
+              <select  class='form-control' name="selectHour23" [(ngModel)]="selectHour23" [value]='0'>
+                <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+              </select>
+            </td>
+            <td>
+              <select  class='form-control' name="selectHour24" [(ngModel)]="selectHour24"  [value]='0'>
+                <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+              </select>
+            </td>
+            <td>
+              <select  class='form-control' name="selectHour25" [(ngModel)]="selectHour25" [value]='0'>
+                <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+              </select>
+            </td>
+            <td>
+              <select  class='form-control' name="selectHour26" [(ngModel)]="selectHour26"  [value]='0'>
+                <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+              </select>
+            </td>  
+            <td>
+                <select  class='form-control' name="selectHour27" [(ngModel)]="selectHour27"  [value]='0'>
+                  <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                  <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                  <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                </select>
+            </td> 
+            <td>
+              <textarea name="workDescription2" [(ngModel)]="workDescription2" cols="30" rows="1"></textarea>
+            </td>
+        </tr>
+        <tr *ngIf="projectLength<3">
+            <td><mat-form-field>
+                <mat-select  [(ngModel)]="selectedValue3" name="Selected Project">
+                  <mat-option *ngFor="let Project of httpdata" [value]="Project.projectId">
+                    {{Project.projectId}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+            <td>
+              <select  class='form-control' name="selectHour31" [(ngModel)]="selectHour31"  [value]='0'>
+                <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+              </select>
+            </td>
+            <td>
+                <select  class='form-control' name="selectHour32" [(ngModel)]="selectHour32" [value]='0'>
+                  <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                  <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                  <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                </select>
+              </td>
+              <td>
+                <select  class='form-control' name="selectHour33" [(ngModel)]="selectHour33"  [value]='0'>                     
+                  <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                  <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                  <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                </select>
+              </td>
+              <td>
+                <select  class='form-control' name="selectHour34" [(ngModel)]="selectHour34"  [value]='0'>
+                  <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                  <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                  <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                </select>
+              </td>
+              <td>
+                <select  class='form-control' name="selectHour35" [(ngModel)]="selectHour35"  [value]='0'>
+                  <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                  <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                  <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                </select>
+              </td>
+              <td>
+                <select  class='form-control' name="selectHour36" [(ngModel)]="selectHour36"  [value]='0'>
+                  <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                  <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                  <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                </select>
+              </td>  
+              <td>
+                  <select  class='form-control' name="selectHour37" [(ngModel)]="selectHour37" [value]='0'>
+                    <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                    <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                    <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                  </select>
+              </td> 
+              <td>
+                <textarea name="workDescription3" [(ngModel)]="workDescription3" cols="30" rows="1"></textarea>
+              </td>
+          </tr>
+          <tr *ngIf="projectLength<4">
+              <td><mat-form-field>
+                  <mat-select  [(ngModel)]="selectedValue4" name="Selected Project">
+                    <mat-option *ngFor="let Project of httpdata" [value]="Project.projectId">
+                      {{Project.projectId}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>
+                <select  class='form-control' name="selectHour41" [(ngModel)]="selectHour41"  [value]='0'>
+                  <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                  <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                  <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                </select>
+              </td>
+              <td>
+                  <select  class='form-control' name="selectHour42" [(ngModel)]="selectHour42" [value]='0'>
+                    <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                    <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                    <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                  </select>
+                </td>
+                <td>
+                  <select  class='form-control' name="selectHour43" [(ngModel)]="selectHour43" [value]='0'>
+                    <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                    <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                    <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                  </select>
+                </td>
+                <td>
+                  <select  class='form-control' name="selectHour44" [(ngModel)]="selectHour44"  [value]='0'>
+                    <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                    <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                    <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                  </select>
+                </td>
+                <td>
+                  <select  class='form-control' name="selectHour45" [(ngModel)]="selectHour45" [value]='0'>
+                    <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                    <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                    <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                  </select>
+                </td>
+                <td>
+                  <select  class='form-control' name="selectHour46" [(ngModel)]="selectHour46"  [value]='0'>
+                    <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                    <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                    <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                  </select>
+                </td>  
+                <td>
+                    <select  class='form-control' name="selectHour47" [(ngModel)]="selectHour47" [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                </td> 
+                <td>
+                  <textarea name="workDescription4" [(ngModel)]="workDescription4" cols="30" rows="1"></textarea>
+                </td>
+            </tr>
+            <tr *ngIf="projectLength<5">
+                <td><mat-form-field>
+                    <mat-select  [(ngModel)]="selectedValue5" name="Selected Project">
+                      <mat-option *ngFor="let Project of httpdata"  [value]="Project.projectId">
+                        {{Project.projectId}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <select  class='form-control' name="selectHour51" [(ngModel)]="selectHour51"  [value]='0'>
+                    <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                    <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                    <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                  </select>
+                </td>
+                <td>
+                    <select  class='form-control' name="selectHour52" [(ngModel)]="selectHour52"  [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select  class='form-control' name="selectHour53" [(ngModel)]="selectHour53" [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select  class='form-control'  name="selectHour54" [(ngModel)]="selectHour54"  [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select  class='form-control' name="selectHour55" [(ngModel)]="selectHour55"  [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select  class='form-control' name="selectHour56" [(ngModel)]="selectHour56"  [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                  </td>  
+                  <td>
+                      <select  class='form-control' name="selectHour57" [(ngModel)]="selectHour57"  [value]='0'>
+                        <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                        <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                        <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                      </select>
+                  </td> 
+                  <td>
+                    <textarea name="workDescription5" [(ngModel)]="workDescription5" cols="30" rows="1"></textarea>
+                  </td>
+              </tr>
+              <tr *ngIf="projectLength<6">
+                <td><mat-form-field>
+                    <mat-select  [(ngModel)]="selectedValue6" name="Selected Project">
+                      <mat-option *ngFor="let Project of httpdata"  [value]="Project.projectId">
+                        {{Project.projectId}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <select  class='form-control' name="selectHour61" [(ngModel)]="selectHour61"  [value]='0'>
+                    <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                    <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                    <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                  </select>
+                </td>
+                <td>
+                    <select  class='form-control' name="selectHour62" [(ngModel)]="selectHour62" [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select  class='form-control' name="selectHour63" [(ngModel)]="selectHour63" [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select  class='form-control' name="selectHour64" [(ngModel)]="selectHour64" [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select  class='form-control' name="selectHour65" [(ngModel)]="selectHour65" [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select  class='form-control' name="selectHour66" [(ngModel)]="selectHour66"  [value]='0'>
+                      <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                      <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                      <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                    </select>
+                  </td>  
+                  <td>
+                      <select  class='form-control' name="selectHour67" [(ngModel)]="selectHour67" [value]='0'>
+                        <option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option>
+                        <option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option>
+                        <option value='9'>9</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option>
+                      </select>
+                  </td> 
+                  <td> 
+                    <textarea name="workDescription6" [(ngModel)]="workDescription6" cols="30" rows="1"></textarea>
+                  </td>
+              </tr>
+        </tbody>
+      </table>
+   </div>
+      
+
+
+
+
+<!-------------------------------------------------------------------------------------------------------------- -->
+<app-timesheet-footerscreen></app-timesheet-footerscreen>

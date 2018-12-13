@@ -1,0 +1,48 @@
+.addTimesheet{
+    margin-left: 10px;
+    display: inline-block;
+    height:35px;
+}
+
+.addTimesheet2{
+    margin: 10px;
+    display: inline-block;
+    height:35px;
+}
+.scheduleAbsences{
+    margin-left: 10px;
+    display: inline-block;
+    height:35px;
+}
+.search{
+    margin-left: 10px;
+    display: inline-block;
+}
+.gap{
+    margin-left: 10px;
+    display: inline-block;
+}
+.image{
+    width: 35px;
+    height: 35px;
+}
+
+.row1{
+    float: left;
+    width: 100%;
+}
+.row2{
+    float: right;
+    width: 100%;
+}
+.personaldetails{
+    margin-top: 30px;
+}
+#buttonAction{
+    float: right;
+    margin-right: 3%;
+}
+.loginMessage {
+    text-align: center;
+    color: red;
+}

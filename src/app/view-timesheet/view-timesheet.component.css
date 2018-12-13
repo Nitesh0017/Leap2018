@@ -1,0 +1,8 @@
+#buttonAction{
+    float: right;
+    margin-right: 3%;
+}
+.loginMessage {
+    text-align: center;
+    color: red;
+}

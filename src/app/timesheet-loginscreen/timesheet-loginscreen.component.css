@@ -1,0 +1,48 @@
+#profile-img {
+    width: 100%;
+    height: 200px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+#inputEmail {
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+#inputPassword {
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+#selectRole {
+    width: 100%;
+    height: 70px;
+    margin-bottom: 30px;
+    margin-left: 45%;
+}
+
+#forgotPass {
+    margin-left: 10%;
+    text-align: center;
+}
+
+#forgotPasswordAnchor {
+    text-decoration: none;
+}
+
+.loginMessage {
+    text-align: center;
+    color: red;
+}
+
+/* #loginContainer {
+    background-color: grey;
+    width: 100%;
+    text-align: center;
+    height: 500px;
+} */

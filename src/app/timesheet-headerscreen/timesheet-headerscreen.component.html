@@ -1,0 +1,44 @@
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Timesheet</a>
+      </div>
+      <div class="nav navbar-nav navbar-right" id="gap">
+      <button  id="addTimesheet" class="btn btn-primary" (click)="open(content)">
+        + Add Timesheet
+      </button>
+      <button  id="addTimesheet" class="btn btn-primary" (click)="approveTimesheet()">
+        Approve Timesheet
+      </button>  
+      <button  id="addTimesheet" class="btn btn-primary" (click)="viewTimesheet()">
+        View Timesheet
+      </button>
+       <img src="../assets/profileimage.png" id="ProfileImage">
+      </div>
+    </div>
+  </nav>
+  
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Timesheet</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="dateOfBirth">Select Week Date</label>
+          <div class="input-group">
+            <input id="dateOfBirth" class="form-control" [(ngModel)]="date" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>

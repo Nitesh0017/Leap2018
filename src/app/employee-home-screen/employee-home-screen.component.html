@@ -1,0 +1,77 @@
+<app-timesheet-headerscreen ></app-timesheet-headerscreen>
+<!-------------------------------------------------------------------------------------------------------------- -->
+
+  <!-- <div class="jumbotron">
+    <h1>Charts to represent various scenerios</h1>
+    <p>
+      In this employee can learn about various information pictorically.
+    </p>
+  </div> -->
+  
+
+  <app-timesheet-chart></app-timesheet-chart>
+
+<!-------------------------------------------------------------------------------------------------------------- -->
+<hr>
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Timesheet</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="dateOfBirth">Select Week Date</label>
+          <div class="input-group">
+            <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="date" name="dp" ngbDatepicker #dp="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="DateSelected(date)" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>
+<button  id="addTimesheet" (click)="open(content)" class="btn btn-primary">+ Add Timesheet</button>
+<hr>
+
+
+<div class="container">
+    <div class="row" *ngIf="deletedTimesheet">
+          <div class="col-md-6" >
+                <p class="loginMessage">{{deletedMessage}}</p>
+          </div>
+    </div>
+    </div>
+<!-- ----------------------------------------------------------------------------------------------------------- -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" >
+        <div style="padding:10px;margin:0 auto;" >
+            <table style="border: 2px solid chocolate;text-align: center;border-collapse: collapse;">
+                <tr>
+                    <th style="border: 2px solid chocolate; width: 25%;">Time Duration</th>
+                    <th style="border: 2px solid chocolate; width: 15%;">Timesheet Status</th>
+                    <th style="border: 2px solid chocolate; width: 15%;">Work Effort Hours</th>
+                    <th style="border: 2px solid chocolate; width: 15%;">Submission Date</th>
+                    <th style="border: 2px solid chocolate; width: 25%;" colspan="2">Action</th>
+                </tr>
+                <tr *ngFor="let timesheet of httpdata; let i = index" [class.active]="i == selectedRow">    
+                    <td style="border: 2px solid chocolate;">{{timesheet.timesheetWeek}}</td>
+                    <td style="border: 2px solid chocolate">{{timesheet.timesheetStatus}}</td>
+                    <td style="border: 2px solid chocolate">{{timesheet.effortHours}}</td>
+                    <td style="border: 2px solid chocolate">{{timesheet.submissionTimesheetDate.split("T")[0]}}</td>
+                    <td style="border: 2px solid chocolate"><button style="width:45%;height: 35px; margin-right: 5%;" class="btn btn-primary" (click)="onEditTimesheet(timesheet)">Edit</button><button style="width:45%;height: 35px;" class="btn btn-primary" (click)="onDeleteTimesheet(timesheet)">Delete</button></td>
+                </tr>
+            </table>
+        </div>
+        </div>
+    </div>
+  </div>
+      <!-------------------------------------------------------------------------------------------------------------- -->
+<app-timesheet-footerscreen></app-timesheet-footerscreen>

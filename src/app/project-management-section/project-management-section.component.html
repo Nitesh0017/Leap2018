@@ -1,0 +1,34 @@
+
+  <div class="jumbotron">
+  <h1>Banner to represent timesheet portal</h1>
+  <!-- <p>
+    In this, a good image for time sheet is required....
+  </p> -->
+</div>
+<!-- ---------------------------------------------------------------------------------------------------------- -->
+<div class="container" id="sectionsContainer">
+  <div class="row">
+    <div class="emptySpace"></div>
+      <div class="filledSpace" id="sectionContainer"><p id="sectionPara">Project Management Section</p></div>
+    <div class="emptySpace"></div>
+    <div class="filledSpace" id="sectionContainer"><p id="sectionPara">Employee Management Section</p></div>
+    <div class="emptySpace"></div>
+  </div>
+
+  <!-- <ul>
+      <li *ngFor="let employee of employees">
+          {{employee.empName}} 
+          - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+      </li>
+  </ul> -->
+  <div class="row">
+      <div class="emptySpace"></div>
+      <div class="filledSpace" id="sectionContainer"><p id="sectionPara">Finance Management Section</p></div>
+      <div class="emptySpace"></div>
+      <div class="filledSpace" id="sectionContainer" (click)="Timesheet()"><p id="sectionPara">Timesheet Management Section</p></div>
+      <div class="emptySpace"></div>
+    </div>
+</div>
+<!-- ---------------------------------------------------------------------------------------------------------------------- -->
+
+<app-timesheet-footerscreen></app-timesheet-footerscreen>

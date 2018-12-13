@@ -1,0 +1,27 @@
+#sectionsContainer {
+    margin-top: 80px;
+
+}
+
+#sectionContainer {
+    height: 200px;
+    background-color: chocolate;
+    /* margin-left: 10%;
+    margin-right: 10%; */
+    margin-top: 80px;
+}
+
+#sectionPara {
+    font-size: 36px;
+    font-family: 'Times New Roman', Times, serif;
+    color: aliceblue;
+    text-align: center;
+}
+
+.emptySpace {
+    width: 10%;
+}
+
+.filledSpace {
+    width: 20%;
+}
