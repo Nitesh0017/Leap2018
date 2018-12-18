@@ -9,3 +9,8 @@
     margin-left: 10px;
     display: inline-block;
 }
+
+.loginMessage {
+    text-align: center;
+    color: red;
+}

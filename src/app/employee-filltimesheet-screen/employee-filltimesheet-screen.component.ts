@@ -43,7 +43,7 @@ export class EmployeeFilltimesheetScreenComponent implements OnInit {
   displaydata(data) {this.httpdata = data;  }  
   timesheetWeek: string= this.firstDate+'/'+this.firstMonth+'/'+this.firstYear+'--'+this.seventhDate+'/'+this.seventhMonth+'/'+this.seventhYear;
   weekStart: string; weekEnd: string; workDescription1: string;workDescription2: string;workDescription3: string;workDescription4: string;workDescription5: string;workDescription6: string;
-
+  dateSupplied: Date;
   ngOnInit() {
     this.EmpId = this.activatedRoute.snapshot.paramMap.get('id');
     this.EmpIdNum = parseInt('107832');
@@ -60,6 +60,7 @@ export class EmployeeFilltimesheetScreenComponent implements OnInit {
     
     this.date = this.year + "-" + this.month + "-" + this.day;
     let date = new Date(this.date);
+    this.dateSupplied= date;
     this.day_of_week = date.getDay();
     if(this.day_of_week == 1)                 //Monday
     {
@@ -946,7 +947,7 @@ export class EmployeeFilltimesheetScreenComponent implements OnInit {
       }
       else
       {
-    var timesheetWeekly : weeklyTimesheetParameter = {timesheet1Date: this.date1,timesheet2Date: this.date2 , timesheet3Date: this.date3,timesheet4Date: this.date4,timesheet5Date: this.date5, timesheet6Date: this.date6, timesheet7Date: this.date7};
+    var timesheetWeekly : weeklyTimesheetParameter = {timesheet1Date: this.date1,timesheet2Date: this.date2 , timesheet3Date: this.date3,timesheet4Date: this.date4,timesheet5Date: this.dateSupplied, timesheet6Date: this.date6, timesheet7Date: this.date7};
       console.log(timesheetWeekly.timesheet1Date, timesheetWeekly.timesheet2Date, timesheetWeekly.timesheet3Date, timesheetWeekly.timesheet4Date
       ,timesheetWeekly.timesheet5Date, timesheetWeekly.timesheet6Date, timesheetWeekly.timesheet7Date);
     this.http.post('http://localhost:59974/api/submitTimesheetWeekly/AddTimesheetWeekly', timesheetWeekly).subscribe( (data) => { console.log(data); });
@@ -954,35 +955,39 @@ export class EmployeeFilltimesheetScreenComponent implements OnInit {
     
     if(this.selectedValue1 != null)
     {
-    var timesheet1 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue1,timesheet1Date:this.date1, timesheet1DateEffort: this.selectHour11, timesheet2DateEffort: this.selectHour12,timesheet3DateEffort: this.selectHour13,timesheet4DateEffort: this.selectHour14,timesheet5DateEffort: this.selectHour15,timesheet6DateEffort: this.selectHour16,timesheet7DateEffort: this.selectHour17,  taskDescription: this.workDescription1 ,timesheetStatus:'Submitted' }; 
+    var timesheet1 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue1,timesheet1Date:this.dateSupplied, timesheet1DateEffort: this.selectHour11, timesheet2DateEffort: this.selectHour12,timesheet3DateEffort: this.selectHour13,timesheet4DateEffort: this.selectHour14,timesheet5DateEffort: this.selectHour15,timesheet6DateEffort: this.selectHour16,timesheet7DateEffort: this.selectHour17,  taskDescription: this.workDescription1 ,timesheetStatus:'Submitted' }; 
     console.log(timesheet1.timesheet1Date);
-   this.http.post('http://localhost:59974/api/AddTimesheet/AddProjectTimesheet', {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue1,timesheet1Date:this.date1, timesheet1DateEffort: this.selectHour11, timesheet2DateEffort: this.selectHour12,timesheet3DateEffort: this.selectHour13,timesheet4DateEffort: this.selectHour14,timesheet5DateEffort: this.selectHour15,timesheet6DateEffort: this.selectHour16,timesheet7DateEffort: this.selectHour17,  taskDescription: this.workDescription1 ,timesheetStatus:'Submitted' }).subscribe( (data) => { console.log(data); });
+   this.http.post('http://localhost:59974/api/AddTimesheet/AddProjectTimesheet', timesheet1).subscribe( (data) => { console.log(data); });
     }
     if(this.selectedValue2 != null)
     {
-      var timesheet2 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue2,timesheet1Date:this.date1, timesheet1DateEffort: this.selectHour21, timesheet2DateEffort: this.selectHour22,timesheet3DateEffort: this.selectHour23,timesheet4DateEffort: this.selectHour24,timesheet5DateEffort: this.selectHour25,timesheet6DateEffort: this.selectHour26,timesheet7DateEffort: this.selectHour27, taskDescription: this.workDescription2,timesheetStatus:'Submitted' }; 
+      var timesheet2 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue2,timesheet1Date:this.dateSupplied, timesheet1DateEffort: this.selectHour21, timesheet2DateEffort: this.selectHour22,timesheet3DateEffort: this.selectHour23,timesheet4DateEffort: this.selectHour24,timesheet5DateEffort: this.selectHour25,timesheet6DateEffort: this.selectHour26,timesheet7DateEffort: this.selectHour27, taskDescription: this.workDescription2,timesheetStatus:'Submitted' }; 
       this.http.post('http://localhost:59974/api/AddTimesheet/AddProjectTimesheet', timesheet2).subscribe( (data) => { console.log(data); });
     }
     if(this.selectedValue3 != null)
     {
-    var timesheet3 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue3,timesheet1Date:this.date1, timesheet1DateEffort: this.selectHour31, timesheet2DateEffort: this.selectHour32,timesheet3DateEffort: this.selectHour33,timesheet4DateEffort: this.selectHour34,timesheet5DateEffort: this.selectHour35,timesheet6DateEffort: this.selectHour36,timesheet7DateEffort: this.selectHour37,  taskDescription: this.workDescription3,timesheetStatus:'Submitted' }; 
+    var timesheet3 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue3,timesheet1Date:this.dateSupplied, timesheet1DateEffort: this.selectHour31, timesheet2DateEffort: this.selectHour32,timesheet3DateEffort: this.selectHour33,timesheet4DateEffort: this.selectHour34,timesheet5DateEffort: this.selectHour35,timesheet6DateEffort: this.selectHour36,timesheet7DateEffort: this.selectHour37,  taskDescription: this.workDescription3,timesheetStatus:'Submitted' }; 
     this.http.post('http://localhost:59974/api/AddTimesheet/AddProjectTimesheet', timesheet3).subscribe( (data) => { console.log(data); });
     }
     if(this.selectedValue4 != null)
     {
-      var timesheet4 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue4,timesheet1Date:this.date1, timesheet1DateEffort: this.selectHour41, timesheet2DateEffort: this.selectHour42,timesheet3DateEffort: this.selectHour43,timesheet4DateEffort: this.selectHour44,timesheet5DateEffort: this.selectHour45,timesheet6DateEffort: this.selectHour46,timesheet7DateEffort: this.selectHour47, taskDescription: this.workDescription4,timesheetStatus:'Submitted' }; 
-      this.http.post('http://localhost:59974/api/AddTimesheet/AddProjectTimesheet', timesheet2).subscribe( (data) => { console.log(data); });
+      var timesheet4 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue4,timesheet1Date:this.dateSupplied, timesheet1DateEffort: this.selectHour41, timesheet2DateEffort: this.selectHour42,timesheet3DateEffort: this.selectHour43,timesheet4DateEffort: this.selectHour44,timesheet5DateEffort: this.selectHour45,timesheet6DateEffort: this.selectHour46,timesheet7DateEffort: this.selectHour47, taskDescription: this.workDescription4,timesheetStatus:'Submitted' }; 
+      this.http.post('http://localhost:59974/api/AddTimesheet/AddProjectTimesheet', timesheet4).subscribe( (data) => { console.log(data); });
     }
     if(this.selectedValue5 != null)
     {
-    var timesheet5 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue5,timesheet1Date:this.date1, timesheet1DateEffort: this.selectHour51, timesheet2DateEffort: this.selectHour52,timesheet3DateEffort: this.selectHour53,timesheet4DateEffort: this.selectHour54,timesheet5DateEffort: this.selectHour55,timesheet6DateEffort: this.selectHour56,timesheet7DateEffort: this.selectHour57,  taskDescription: this.workDescription5,timesheetStatus:'Submitted' }; 
-    this.http.post('http://localhost:59974/api/AddTimesheet/AddProjectTimesheet', timesheet1).subscribe( (data) => { console.log(data); });
+    var timesheet5 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue5,timesheet1Date:this.dateSupplied, timesheet1DateEffort: this.selectHour51, timesheet2DateEffort: this.selectHour52,timesheet3DateEffort: this.selectHour53,timesheet4DateEffort: this.selectHour54,timesheet5DateEffort: this.selectHour55,timesheet6DateEffort: this.selectHour56,timesheet7DateEffort: this.selectHour57,  taskDescription: this.workDescription5,timesheetStatus:'Submitted' }; 
+    this.http.post('http://localhost:59974/api/AddTimesheet/AddProjectTimesheet', timesheet5).subscribe( (data) => { console.log(data); });
     }
     if(this.selectedValue6 != null)
     {
-      var timesheet6 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue6,timesheet1Date:this.date1, timesheet1DateEffort: this.selectHour61, timesheet2DateEffort: this.selectHour62,timesheet3DateEffort: this.selectHour63,timesheet4DateEffort: this.selectHour64,timesheet5DateEffort: this.selectHour65,timesheet6DateEffort: this.selectHour66,timesheet7DateEffort: this.selectHour67, taskDescription: this.workDescription6,timesheetStatus:'Submitted' }; 
-      this.http.post('http://localhost:59974/api/AddTimesheet/AddProjectTimesheet', timesheet2).subscribe( (data) => { console.log(data); });
+      var timesheet6 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue6,timesheet1Date:this.dateSupplied, timesheet1DateEffort: this.selectHour61, timesheet2DateEffort: this.selectHour62,timesheet3DateEffort: this.selectHour63,timesheet4DateEffort: this.selectHour64,timesheet5DateEffort: this.selectHour65,timesheet6DateEffort: this.selectHour66,timesheet7DateEffort: this.selectHour67, taskDescription: this.workDescription6,timesheetStatus:'Submitted' }; 
+      this.http.post('http://localhost:59974/api/AddTimesheet/AddProjectTimesheet', timesheet6).subscribe( (data) => { console.log(data); });
     }
+    var timesheet7 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: '',timesheet1Date:this.dateSupplied, timesheet1DateEffort: 0, timesheet2DateEffort: 0,timesheet3DateEffort: 0,timesheet4DateEffort: 0,timesheet5DateEffort: 0,timesheet6DateEffort: 0,timesheet7DateEffort: 0, taskDescription: "",timesheetStatus:'' }; 
+      console.log(timesheet7.empId,timesheet7.timesheet1Date);
+    this.http.post('http://localhost:59974/api/EmailTrigger/EditTimesheet', timesheet7).subscribe( (data) => { console.log(data); });
+
       setTimeout(()=> {
         this.router.navigate(['/EmployeeHome']);
       }, 900);
@@ -1247,41 +1252,43 @@ export class EmployeeFilltimesheetScreenComponent implements OnInit {
     }
     else
     {
+
+      var timesheetWeekly : weeklyTimesheetParameter = {timesheet1Date: this.date1,timesheet2Date: this.date2 , timesheet3Date: this.date3,timesheet4Date: this.date4,timesheet5Date: this.dateSupplied, timesheet6Date: this.date6, timesheet7Date: this.date7};
+      this.http.post('http://localhost:59974/api/submitTimesheetWeekly/AddTimesheetWeekly', timesheetWeekly).subscribe( (data) => { console.log(data); });
+    
       if(this.selectedValue1 != null)
       {
-      var timesheet1 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue1,timesheet1Date:this.date1, timesheet1DateEffort: this.selectHour11, timesheet2DateEffort: this.selectHour12,timesheet3DateEffort: this.selectHour13,timesheet4DateEffort: this.selectHour14,timesheet5DateEffort: this.selectHour15,timesheet6DateEffort: this.selectHour16,timesheet7DateEffort: this.selectHour17,  taskDescription: this.workDescription1 ,timesheetStatus:'Saved' }; 
+      var timesheet1 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue1,timesheet1Date:this.dateSupplied, timesheet1DateEffort: this.selectHour11, timesheet2DateEffort: this.selectHour12,timesheet3DateEffort: this.selectHour13,timesheet4DateEffort: this.selectHour14,timesheet5DateEffort: this.selectHour15,timesheet6DateEffort: this.selectHour16,timesheet7DateEffort: this.selectHour17,  taskDescription: this.workDescription1 ,timesheetStatus:'Saved' }; 
       this.http.post('http://localhost:59974/api/AddTimesheet/AddProjectTimesheet', timesheet1).subscribe( (data) => { console.log(data); });
       }
       if(this.selectedValue2 != null)
       {
-        var timesheet2 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue2,timesheet1Date:this.date1, timesheet1DateEffort: this.selectHour21, timesheet2DateEffort: this.selectHour22,timesheet3DateEffort: this.selectHour23,timesheet4DateEffort: this.selectHour24,timesheet5DateEffort: this.selectHour25,timesheet6DateEffort: this.selectHour26,timesheet7DateEffort: this.selectHour27, taskDescription: this.workDescription2,timesheetStatus:'Saved' }; 
+        var timesheet2 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue2,timesheet1Date:this.dateSupplied, timesheet1DateEffort: this.selectHour21, timesheet2DateEffort: this.selectHour22,timesheet3DateEffort: this.selectHour23,timesheet4DateEffort: this.selectHour24,timesheet5DateEffort: this.selectHour25,timesheet6DateEffort: this.selectHour26,timesheet7DateEffort: this.selectHour27, taskDescription: this.workDescription2,timesheetStatus:'Saved' }; 
         this.http.post('http://localhost:59974/api/AddTimesheet/AddProjectTimesheet', timesheet2).subscribe( (data) => { console.log(data); });
       }
       if(this.selectedValue3 != null)
       {
-      var timesheet3 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue3,timesheet1Date:this.date1, timesheet1DateEffort: this.selectHour31, timesheet2DateEffort: this.selectHour32,timesheet3DateEffort: this.selectHour33,timesheet4DateEffort: this.selectHour34,timesheet5DateEffort: this.selectHour35,timesheet6DateEffort: this.selectHour36,timesheet7DateEffort: this.selectHour37,  taskDescription: this.workDescription3,timesheetStatus:'Saved'}; 
+      var timesheet3 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue3,timesheet1Date:this.dateSupplied, timesheet1DateEffort: this.selectHour31, timesheet2DateEffort: this.selectHour32,timesheet3DateEffort: this.selectHour33,timesheet4DateEffort: this.selectHour34,timesheet5DateEffort: this.selectHour35,timesheet6DateEffort: this.selectHour36,timesheet7DateEffort: this.selectHour37,  taskDescription: this.workDescription3,timesheetStatus:'Saved'}; 
       this.http.post('http://localhost:59974/api/AddTimesheet/AddProjectTimesheet', timesheet3).subscribe( (data) => { console.log(data); });
       }
       if(this.selectedValue4 != null)
       {
-        var timesheet4 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue4,timesheet1Date:this.date1, timesheet1DateEffort: this.selectHour41, timesheet2DateEffort: this.selectHour42,timesheet3DateEffort: this.selectHour43,timesheet4DateEffort: this.selectHour44,timesheet5DateEffort: this.selectHour45,timesheet6DateEffort: this.selectHour46,timesheet7DateEffort: this.selectHour47, taskDescription: this.workDescription4,timesheetStatus:'Saved' }; 
+        var timesheet4 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue4,timesheet1Date:this.dateSupplied, timesheet1DateEffort: this.selectHour41, timesheet2DateEffort: this.selectHour42,timesheet3DateEffort: this.selectHour43,timesheet4DateEffort: this.selectHour44,timesheet5DateEffort: this.selectHour45,timesheet6DateEffort: this.selectHour46,timesheet7DateEffort: this.selectHour47, taskDescription: this.workDescription4,timesheetStatus:'Saved' }; 
         this.http.post('http://localhost:59974/api/AddTimesheet/AddProjectTimesheet', timesheet2).subscribe( (data) => { console.log(data); });
       }
       if(this.selectedValue5 != null)
       {
-      var timesheet5 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue5,timesheet1Date:this.date1, timesheet1DateEffort: this.selectHour51, timesheet2DateEffort: this.selectHour52,timesheet3DateEffort: this.selectHour53,timesheet4DateEffort: this.selectHour54,timesheet5DateEffort: this.selectHour55,timesheet6DateEffort: this.selectHour56,timesheet7DateEffort: this.selectHour57,  taskDescription: this.workDescription5,timesheetStatus:'Saved' }; 
+      var timesheet5 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue5,timesheet1Date:this.dateSupplied, timesheet1DateEffort: this.selectHour51, timesheet2DateEffort: this.selectHour52,timesheet3DateEffort: this.selectHour53,timesheet4DateEffort: this.selectHour54,timesheet5DateEffort: this.selectHour55,timesheet6DateEffort: this.selectHour56,timesheet7DateEffort: this.selectHour57,  taskDescription: this.workDescription5,timesheetStatus:'Saved' }; 
       this.http.post('http://localhost:59974/api/AddTimesheet/AddProjectTimesheet', timesheet1).subscribe( (data) => { console.log(data); });
       }
       if(this.selectedValue6 != null)
       {
-        var timesheet6 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue6,timesheet1Date:this.date1, timesheet1DateEffort: this.selectHour61, timesheet2DateEffort: this.selectHour62,timesheet3DateEffort: this.selectHour63,timesheet4DateEffort: this.selectHour64,timesheet5DateEffort: this.selectHour65,timesheet6DateEffort: this.selectHour66,timesheet7DateEffort: this.selectHour67, taskDescription: this.workDescription6,timesheetStatus:'Saved' }; 
+        var timesheet6 : Timesheet = {RMId:0,empId: this.EmpIdNum, projectId: this.selectedValue6,timesheet1Date:this.dateSupplied, timesheet1DateEffort: this.selectHour61, timesheet2DateEffort: this.selectHour62,timesheet3DateEffort: this.selectHour63,timesheet4DateEffort: this.selectHour64,timesheet5DateEffort: this.selectHour65,timesheet6DateEffort: this.selectHour66,timesheet7DateEffort: this.selectHour67, taskDescription: this.workDescription6,timesheetStatus:'Saved' }; 
         this.http.post('http://localhost:59974/api/AddTimesheet/AddProjectTimesheet', timesheet2).subscribe( (data) => { console.log(data); });
       }
 
 
-    var timesheetWeekly : weeklyTimesheetParameter = {timesheet1Date: this.date1,timesheet2Date: this.date2 , timesheet3Date: this.date3,timesheet4Date: this.date4,timesheet5Date: this.date5, timesheet6Date: this.date6, timesheet7Date: this.date7};
-    this.http.post('http://localhost:59974/api/submitTimesheetWeekly/AddTimesheetWeekly', timesheetWeekly).subscribe( (data) => { console.log(data); });
-    
+   
     setTimeout(()=> {
       this.router.navigate(['/EmployeeHome']);
     }, 900);

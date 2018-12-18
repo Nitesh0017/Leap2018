@@ -10,17 +10,17 @@ import {DataService} from '../globalVariable.service';
 import * as CryptoJS from 'crypto-js';
 import {AuthenticationService} from '../Authentication';
 import { first } from 'rxjs/operators';
-import {SessionTokenService} from '../SessionTokenService';
+//import {SessionTokenService} from '../SessionTokenService';
 
 @Component({
   selector: 'app-timesheet-loginscreen',
   templateUrl: './timesheet-loginscreen.component.html',
   styleUrls: ['./timesheet-loginscreen.component.css'],
-  providers: [DataService,SessionTokenService]
+  providers: [DataService] //SessionTokenService
 })
 export class TimesheetLoginscreenComponent implements OnInit {
   isLoginError : boolean = false;
-  constructor(public http: Http, public router: Router,private SessionTokenService: SessionTokenService,public AuthenticationService: AuthenticationService) { 
+  constructor(public http: Http, public router: Router,private AuthenticationService: AuthenticationService) { //private SessionTokenService: SessionTokenService
     
   }
 
@@ -36,7 +36,12 @@ export class TimesheetLoginscreenComponent implements OnInit {
   ngOnInit() {
   }
 
-  private onLoginEmp(form : NgForm) {
+  ForgotPass(){
+    console.log("clicked");
+    this.router.navigate(['/forgotPass']);
+  }
+
+  onLoginEmp(form : NgForm) {
     if(form.invalid) 
     { 
       if(form.value.empEmail == "" && form.value.empPassword != "")
@@ -50,8 +55,7 @@ export class TimesheetLoginscreenComponent implements OnInit {
       else
       {
         this.message = "Please enter both email id and password.";
-      }  
-
+      } 
       this.btnStatus = true;
       return; 
 

@@ -424,7 +424,10 @@
           <td><mat-form-field>
               <mat-select  [(ngModel)]="selectedValue2" name="Selected Project">
                 <mat-option *ngFor="let Project of httpdata" [value]="Project.projectId">
-                  {{Project.projectId}}
+                  {{Project.projectName}}
+                </mat-option>
+                <mat-option value="Other">
+                  Other
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -486,7 +489,10 @@
             <td><mat-form-field>
                 <mat-select  [(ngModel)]="selectedValue3" name="Selected Project">
                   <mat-option *ngFor="let Project of httpdata" [value]="Project.projectId">
-                    {{Project.projectId}}
+                    {{Project.projectName}}
+                  </mat-option>
+                  <mat-option value="Other">
+                    Other
                   </mat-option>
                 </mat-select>
               </mat-form-field>
@@ -548,7 +554,10 @@
               <td><mat-form-field>
                   <mat-select  [(ngModel)]="selectedValue4" name="Selected Project">
                     <mat-option *ngFor="let Project of httpdata" [value]="Project.projectId">
-                      {{Project.projectId}}
+                      {{Project.projectName}}
+                    </mat-option>
+                    <mat-option value="Other">
+                      Other
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -610,7 +619,10 @@
                 <td><mat-form-field>
                     <mat-select  [(ngModel)]="selectedValue5" name="Selected Project">
                       <mat-option *ngFor="let Project of httpdata"  [value]="Project.projectId">
-                        {{Project.projectId}}
+                        {{Project.projectName}}
+                      </mat-option>
+                      <mat-option value="Other">
+                        Other
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
@@ -672,9 +684,12 @@
                 <td><mat-form-field>
                     <mat-select  [(ngModel)]="selectedValue6" name="Selected Project">
                       <mat-option *ngFor="let Project of httpdata"  [value]="Project.projectId">
-                        {{Project.projectId}}
-                      </mat-option>
-                    </mat-select>
+                        {{Project.projectName}}
+                            </mat-option>
+                            <mat-option value="Other">
+                              Other
+                            </mat-option>
+                          </mat-select>
                   </mat-form-field>
                 </td>
                 <td>

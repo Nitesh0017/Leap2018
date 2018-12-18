@@ -19,16 +19,15 @@
     <div class="col-md-3"></div>
       <div class="col-md-6">
         <img id="profile-img" src="../assets/watch.jpg" />
-        <form class="form-signin" (submit)="onLoginEmp(LoginEmp)" #LoginEmp="ngForm">
+        <form class="form-forgotPass" (submit)="onForgotEmp(ForgotEmp)" #ForgotEmp="ngForm">
           <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="empEmail" ngModel #empEmail="ngModel" required autofocus> <!-- Text box for Email Id -->
 
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="empPassword" ngModel #empPassword="ngModel" required> <!-- Text box for Password -->
-          <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+         <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Send URL</button>
         </form>
         <div id="forgotPass"> Unable to sign in?
-          <button (click)='ForgotPass()'>
-            Forgot the password
-         </button>
+          <a href="#" (click)="LoginScreen()" class="forgotPasswordAnchor">
+            Back to Login
+          </a>
         </div>
       <div class="col-md-3"></div>
     </div>

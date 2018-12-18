@@ -25,7 +25,12 @@ ngOnInit() {
 }
 
 approveTimesheet(){
+   
   this.router.navigate(['viewRMTimesheet']);
+}
+
+Logout(){
+  this.router.navigate(['Login']);
 }
 
 viewTimesheet(){

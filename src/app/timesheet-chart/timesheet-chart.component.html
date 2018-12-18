@@ -6,7 +6,7 @@
     <div class="col-md-6">
         <mat-form-field>
             <mat-select placeholder="Select Employee" >
-              <mat-option *ngFor="let team of retrieveTeam" (click)="selectedEmployeeTimesheet(team.empId)" [value]="team.empId">
+              <mat-option *ngFor="let team of retrieveTeam"  (click)="selectedEmployeeTimesheet(team.empId)" [value]="team.empId">
                 {{team.empName}}
               </mat-option>
             </mat-select>
@@ -21,7 +21,7 @@
     <div class="col-md-10">
       <canvas 
       baseChart
-      [chartType]="'bar'"
+      [chartType]="'pie'"
       [datasets]="pieChartData"
       [labels]="pieChartLabels"
       [options]="pieChartOptions"

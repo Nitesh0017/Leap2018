@@ -12,7 +12,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {Employee} from './employeeParameter.model';
 import {Employee1} from './empParameter.model';
 import { AppComponent } from './app.component';
-import { TimesheetHomescreenComponent } from './timesheet-homescreen/timesheet-homescreen.component';
 import { EmployeeHomeScreenComponent } from './employee-home-screen/employee-home-screen.component';
 import { Component } from '@angular/core/src/metadata/directives';
 import { EmployeeFilltimesheetScreenComponent } from './employee-filltimesheet-screen/employee-filltimesheet-screen.component';
@@ -25,17 +24,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditTimesheetComponent } from './edit-timesheet/edit-timesheet.component';
 import { ViewTimesheetComponent } from './view-timesheet/view-timesheet.component';
 import {AuthenticationService} from './Authentication';
-import {SessionTokenService} from './SessionTokenService';
+//import {SessionTokenService} from './SessionTokenService';
 import { ViewTeamTimesheetComponent } from './view-team-timesheet/view-team-timesheet.component';
 import { TimesheetChartComponent } from './timesheet-chart/timesheet-chart.component';
 
 import { ChartsModule } from 'ng2-charts';
+import { SendForgotPassLinkComponent } from './send-forgot-pass-link/send-forgot-pass-link.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TimesheetHomescreenComponent,
     EmployeeHomeScreenComponent,
     EmployeeFilltimesheetScreenComponent,
     TimesheetHeaderscreenComponent,
@@ -45,7 +45,9 @@ import { ChartsModule } from 'ng2-charts';
     EditTimesheetComponent,
     ViewTimesheetComponent,
     ViewTeamTimesheetComponent,
-    TimesheetChartComponent
+    TimesheetChartComponent,
+    SendForgotPassLinkComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule, FormsModule,HttpModule,MatFormFieldModule, MatInputModule, NgbModule, ChartsModule ,
@@ -53,8 +55,8 @@ import { ChartsModule } from 'ng2-charts';
     MatDatepickerModule,MatButtonModule,MatRippleModule,MatNativeDateModule ,HttpClientModule, MatSelectModule,
     BrowserAnimationsModule ,MatOptionModule,RouterModule.forRoot([
       {
-        path: '',
-        component: TimesheetHomescreenComponent 
+        path: 'logout',
+        component: TimesheetLoginscreenComponent
       },
       {
         path: 'EmployeeHome',
@@ -69,7 +71,7 @@ import { ChartsModule } from 'ng2-charts';
         component:  EditTimesheetComponent
       },
       {
-        path: 'Login',
+        path: '',
         component:  TimesheetLoginscreenComponent
       },
       {
@@ -83,10 +85,18 @@ import { ChartsModule } from 'ng2-charts';
       {
         path: 'ProjectManagementSection',
         component: ProjectManagementSectionComponent
+      },
+      {
+        path: 'forgotPass',
+        component: SendForgotPassLinkComponent
+      },
+      {
+        path: 'resetPassword/:id',
+        component: ResetPasswordComponent
       }
     ])
   ],
-  providers: [DataService,MatDatepickerModule,AuthenticationService, SessionTokenService],
+  providers: [DataService,MatDatepickerModule,AuthenticationService ], //SessionTokenService
   bootstrap: [AppComponent]
 })
 export class AppModule { 

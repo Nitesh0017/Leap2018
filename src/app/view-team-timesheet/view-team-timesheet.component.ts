@@ -82,8 +82,11 @@ export class ViewTeamTimesheetComponent implements OnInit {
     var timesheet: Timesheet = {RMId:107832,timesheet1Date: new Date(Date.parse(this.date)), empId: this.EmpIdNum, projectId: '',timesheet1DateEffort: 0,
       timesheet2DateEffort: 0,timesheet3DateEffort: 0, timesheet4DateEffort: 0, timesheet5DateEffort: 0, timesheet6DateEffort: 0,
       timesheet7DateEffort: 0, taskDescription: '', timesheetStatus: 'Rejected'}
-    this.http.post('http://localhost:59974/api/ReviewEmployeeTimesheet/reviewed', timesheet).pipe(map( (response) => response.json())).subscribe( (data) => { console.log(data); this.displayMessage(data);})
-   this.reviewedTimesheet =true;
+    
+      this.http.post('http://localhost:59974/api/ReviewEmployeeTimesheet/reviewed', timesheet).pipe(map( (response) => response.json())).subscribe( (data) => { console.log(data); this.displayMessage(data);})
+      this.http.post('http://localhost:59974/api/EmailRejectTimesheet/EditTimesheet', timesheet).subscribe( (data) => { console.log(data);})
+   
+      this.reviewedTimesheet =true;
    this.varSelectedEmployeeTimesheet = false;
   }
 
@@ -92,7 +95,9 @@ export class ViewTeamTimesheetComponent implements OnInit {
       timesheet2DateEffort: 0,timesheet3DateEffort: 0, timesheet4DateEffort: 0, timesheet5DateEffort: 0, timesheet6DateEffort: 0,
       timesheet7DateEffort: 0, taskDescription: '', timesheetStatus: 'Approved'}
     this.http.post('http://localhost:59974/api/ReviewEmployeeTimesheet/reviewed', timesheet).subscribe( (data) => { console.log(data); this.displayMessage(data);})
-   this.reviewedTimesheet =true;
+    this.http.post('http://localhost:59974/api/EmailApproveTimesheet/EditTimesheet', timesheet).subscribe( (data) => { console.log(data); })
+   
+    this.reviewedTimesheet =true;
    this.varSelectedEmployeeTimesheet = false;
   }
   reviewedMessage: string;
